@@ -5,13 +5,15 @@ angular.module('app').controller('TestCtrl', function TodoCtrl($scope, $modal, s
   $scope.actions = [];
   for (var i = 0; i < 10; i++) {
     $scope.actions.push({
-      name: "action " + String(i),
+      name: "action" + String(i),
       path: "/action" + String(i)
     });
   }
 
   $scope.actionTriggered = function(action) {
-    console.log(action.name);
+    console.log(action);
+    var url = '/action/create?name=' + action.name;
+    $http.get(url);
   };
 
   function responseAlert(httpOrSocket, url, response, status) {

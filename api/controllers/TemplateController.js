@@ -15,6 +15,8 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
+var jade = require('jade');
+
 module.exports = {
     
   
@@ -24,7 +26,7 @@ module.exports = {
    */
   find: function(req,res) {
     var tpl = req.param('id');
-    console.log('looking for template' + tpl);
+    console.log('looking for template: ' + tpl);
     require('fs').readFile('assets/templates/partials/'+tpl,function (err, contents) {
       if (err){
         console.log(err);
@@ -32,14 +34,26 @@ module.exports = {
         res.send('');
       }
       else {
-        res.contentType('text/html');
-        res.send(contents);
+        res.contentType('text/html'); 
+
+        // handle case of jade files
+        var extension = tpl.split('.').pop();
+        if (extension === 'jade') {
+          jade.render(contents, null, function (err, html) {
+            if (err) {
+              console.log(err);
+              res.contentType('text/html');
+              res.send('');
+            } else {
+              res.send(html);
+            }
+          });
+        } else {
+          res.send(contents);          
+        }
       }  
     });
   },
-
-
-
 
   /**
    * Overrides for the settings in `config/controllers.js`

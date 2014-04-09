@@ -17,7 +17,7 @@ angular.module('app', [
         templateUrl: '/template/find/test.html',
         controller: 'TestCtrl'
       }).when('/testjade', {
-        templateUrl: '/template/find/testjade'
+        templateUrl: '/template/find/testjade.jade'
       });
 
     console.log('angular!!');
