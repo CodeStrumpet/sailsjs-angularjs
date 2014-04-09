@@ -14,7 +14,8 @@ angular.module('app', [
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/test', {
-        templateUrl: '/template/find/test.html'
+        templateUrl: '/template/find/test.html',
+        controller: 'TestCtrl'
       }).when('/testjade', {
         templateUrl: '/template/find/testjade'
       });
