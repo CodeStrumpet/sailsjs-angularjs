@@ -2,7 +2,14 @@
 
 angular.module('app').controller('TestCtrl', function TodoCtrl($scope, $modal, sailsSocket, $http, $log) {
 
-  console.log('testCtrl');
+  $scope.actions = [];
+  for (var i = 0; i < 10; i++) {
+    $scope.actions.push({
+      name: "action " + String(i),
+      path: "/action" + String(i)
+    });
+  }
+
   function responseAlert(httpOrSocket, url, response, status) {
     // NOTE:
     // Socket calls do not return HTTP status in the `status` argument.
