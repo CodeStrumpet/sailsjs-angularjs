@@ -15,7 +15,8 @@
     "async": "0.2.9",
     "passport-local": "0.1.6",
     "sails-mongo": "~0.9.7",
-    "sails-mysql": "~0.9.9"
+    "sails-mysql": "~0.9.9",
+    "nconf": "~0.6.9"
   },
   "scripts": {
     "start": "node app.js",

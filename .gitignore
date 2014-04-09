@@ -44,3 +44,8 @@ nbproject
 # local config
 ########################
 config/local.js
+
+########################
+# env files
+########################
+/config/.env*

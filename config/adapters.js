@@ -12,6 +12,8 @@
  * http://sailsjs.org/#documentation
  */
 
+var nconf = require('nconf');
+
 module.exports.adapters = {
 
   // If you leave the adapter config unspecified 
@@ -26,23 +28,21 @@ module.exports.adapters = {
 
   mongo: {
     module: 'sails-mongo',
-    host: 'localhost',
-    port: 27017,
-    //user: 'username',
-    //password: 'password',
-    database: 'bridge-mongo'
+        
+    host: nconf.get('MONGO_HOST'),
+    port: nconf.get('MONGO_PORT'),
+    user: nconf.get('MONGO_USER'),
+    password: nconf.get('MONGO_PASSWORD'),
+    database: nconf.get('MONGO_DATABASE')
+
   },
 
-  // MySQL is the world's most popular relational database.
-  // Learn more: http://en.wikipedia.org/wiki/MySQL
-  myLocalMySQLDatabase: {
+  mysql: {
 
     module: 'sails-mysql',
-    host: 'YOUR_MYSQL_SERVER_HOSTNAME_OR_IP_ADDRESS',
-    user: 'YOUR_MYSQL_USER',
-    // Psst.. You can put your password in config/local.js instead
-    // so you don't inadvertently push it up if you're using version control
-    password: 'YOUR_MYSQL_PASSWORD', 
-    database: 'YOUR_MYSQL_DB'
+    host: nconf.get('MYSQL_HOST'),
+    user: nconf.get('MYSQL_USER'),
+    password: nconf.get('MYSQL_PASSWORD'), 
+    database: nconf.get('MYSQL_DATABASE')
   }
 };

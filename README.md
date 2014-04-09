@@ -55,3 +55,10 @@ Node.js and Angular.js web application.
 
 **production**  
 `TODO!!!`
+
+
+##Environment variables  
+
++ Environment variables accessed through nconf
+    * Use environment variable CONFIG_SCHEME local.js
+
