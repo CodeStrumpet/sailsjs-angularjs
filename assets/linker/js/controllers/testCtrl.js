@@ -10,6 +10,10 @@ angular.module('app').controller('TestCtrl', function TodoCtrl($scope, $modal, s
     });
   }
 
+  $scope.actionTriggered = function(action) {
+    console.log(action.name);
+  };
+
   function responseAlert(httpOrSocket, url, response, status) {
     // NOTE:
     // Socket calls do not return HTTP status in the `status` argument.
