@@ -12,10 +12,9 @@ var async = require('async');
 
 module.exports.bootstrap = function (cb) {
 
-  // It's very important to trigger this callack method when you are finished
-  // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
-  //cb();
 
+  // edit router:request listener functions so we can use passport policies with websocket requests
+  // http://stackoverflow.com/questions/17365444/sails-js-passport-js-authentication-through-websockets
   var passport = require('passport'),
     initialize = passport.initialize(),
     session = passport.session(),
@@ -113,18 +112,19 @@ module.exports.bootstrap = function (cb) {
 
     // Use the LocalStrategy within Passport.
     // Strategies in passport require a `verify` function, which accept
-    // credentials (in this case, a username and password), and invoke a callback
-    // with a user object. In the real world, this would query a database;
-    // however, in this example we are using a baked-in set of users.
-    passport.use(new LocalStrategy(
-      function(username, password, done) {
-        // Find the user by username. If there is no user with the given
-        // username, or the password is not correct, set the user to `false` to
+    // credentials (in this case, a email and password), and invoke a callback
+    // with a user object.
+    passport.use(new LocalStrategy({
+        usernameField: 'email'
+      },
+      function(email, password, done) {
+        // Find the user by email. If there is no user with the given
+        // email, or the password is not correct, set the user to `false` to
         // indicate failure and set a flash message. Otherwise, return the
         // authenticated `user`.
-        User.findOneByUsername(username).done(function(err, user) {
+        User.findOneByEmail(email).done(function(err, user) {
           if (err) { return done(err); }
-          if (!user) { return done(null, false, { message: 'Unknown user ' + username }); }
+          if (!user) { return done(null, false, { message: 'Unknown user ' + email }); }
           user.validPassword(password, function(err, res) {
             if (err) { return done(err); }
             if (!res) { return done(null, false, { message: 'Invalid password' }); }

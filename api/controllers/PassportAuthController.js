@@ -16,7 +16,7 @@ var PassportAuthController = {
       if (err) return next(err);
       if (!user) {
         return res.view('passportauth/login', {
-          username: req.body.username,
+          email: req.body.email,
           message: info.message
         });
       }

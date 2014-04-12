@@ -11,12 +11,12 @@ block body
             if message != ''
               .alert.alert-danger= message
             .col-sm-offset-2.col-sm-10
-              p: em.text-muted test / test123
+              p: em.text-muted foo@bar.com / test123
             form.form-horizontal(role="form", action="/login", method="post")
               .form-group
-                label.col-sm-2.control-label(for="loginUsername") Username
+                label.col-sm-2.control-label(for="loginEmail") Email
                 .col-sm-10
-                  input.form-control(type="text", id="loginUsername", name="username", placeholder="Username", value=username)
+                  input.form-control(type="email", id="loginEmail", name="email", placeholder="Email", value=email)
               .form-group
                 label.col-sm-2.control-label(for="loginPassword") Password
                 .col-sm-10
