@@ -16,9 +16,29 @@ module.exports.policies = {
 
   // Default policy for all controllers and actions
   // (`true` allows public access) 
-  '*': true,
+  '*': false,
+
+  'todo' : 'isPassportAuthenticated',
+
+  MainController : {
+    'index' : true,
+    'todos': 'isPassportAuthenticated'
+  },
+
+  TemplateController : {
+    '*' : true
+  },
+
+  ActionController : {
+    '*' : true
+  },
+
+  EchoController : {
+    '*' : true
+  },
 
   RestErrorController: {
+    '*' : true,
     unauthorized: 'isAuthorized',
     forbidden:    false           // Acts oddly in socket mode?
   },
@@ -27,6 +47,7 @@ module.exports.policies = {
     '*': true,
     protected: 'isPassportAuthenticated'
   }
+
 
   /*
 	// Here's an example of adding some policies to a controller
