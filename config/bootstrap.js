@@ -69,7 +69,6 @@ module.exports.bootstrap = function (cb) {
   function createUserData(done) {
     var users = [
       {
-        "username": "test",
         "password": "test123",
         "email": "foo@bar.com"
       }

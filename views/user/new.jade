@@ -1,0 +1,26 @@
+extends ../layout
+
+block body
+  .container
+    .row
+      .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+        .panel.panel-primary
+          .panel-heading.clearfix
+            h1.panel-title Create New User
+          .panel-body
+            if message != ''
+              .alert.alert-danger= message
+            form.form-horizontal(role="form", action="/user/create", method="post")
+              .form-group
+                label.col-sm-2.control-label(for="email") Email
+                .col-sm-10
+                  input.form-control(type="email", id="email", name="email", placeholder="Email", value=email)
+              .form-group
+                label.col-sm-2.control-label(for="loginPassword") Password
+                .col-sm-10
+                  input.form-control(type="password", id="loginPassword", name="password", placeholder="Password")
+              .form-group
+                .col-sm-offset-2.col-sm-10
+                  button.btn.btn-default(type="submit") Create User
+
+

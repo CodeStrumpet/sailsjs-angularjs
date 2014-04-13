@@ -43,6 +43,11 @@ module.exports.policies = {
     forbidden:    false           // Acts oddly in socket mode?
   },
 
+  UserController: {
+    'new' : true,
+    'create' : true
+  },
+
   PassportAuthController: {
     '*': true,
     protected: 'isPassportAuthenticated'
