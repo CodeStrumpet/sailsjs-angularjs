@@ -1,6 +1,6 @@
-bridge-node
+sailsjs-angularjs
 ====
-Bridge Athletic web application build on node.js backend and angular.js frontend. 
+Web application build on node.js backend and angular.js frontend. Jade templates are used and are rendered on demand for angular by a sails controller.
 
 ##Build Dependencies
 
