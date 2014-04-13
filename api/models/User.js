@@ -25,6 +25,11 @@ module.exports = {
       required: true,
       unique: true
     },
+    role : {
+      type: 'STRING',
+      required: true,
+      defaultsTo: 'basic'
+    },
     // Override toJSON instance method to remove password value
     toJSON: function() {
       var obj = this.toObject();

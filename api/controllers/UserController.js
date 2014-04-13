@@ -15,6 +15,8 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
+var consts = require('../../assets/linker/js/sharedConstants').consts;
+
 module.exports = {
     
   
@@ -51,7 +53,14 @@ module.exports = {
     var userObj = {
       email: req.param('email'),
       password: req.param('password')
-    }
+    };
+
+    // // check if there is an existing user logged in
+    // if (req.user) {
+    //   if (req.user.role == consts.ACCESS_ROLES.admin) {
+    //     console.log('logged in user is an admin');
+    //   }
+    // }
 
     // Create a User with the params sent from 
     // the sign-up form --> new.jade
