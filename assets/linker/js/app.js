@@ -13,11 +13,17 @@ angular.module('app', [
 ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
+      .when('/', {
+        templateUrl: '/template/find/main.jade',
+        controller: 'MainCtrl'
+      })
       .when('/test', {
         templateUrl: '/template/find/test.html',
         controller: 'TestCtrl'
       }).when('/testjade', {
         templateUrl: '/template/find/testjade.jade'
+      }).otherwise({
+        redirectTo: '/'
       });
 
     console.log('angular!!');

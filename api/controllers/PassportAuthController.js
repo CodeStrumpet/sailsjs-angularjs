@@ -20,6 +20,10 @@ var PassportAuthController = {
           message: info.message
         });
       }
+      // set the user as a variable on the session
+      req.session.user = user;
+
+      // use passport's session management
       req.logIn(user, function(err) {
         if (err) return next(err);
         return res.redirect('/protected');
@@ -28,6 +32,10 @@ var PassportAuthController = {
   },
 
   logout: function(req,res) {
+    // remove the user variable on the session
+    delete(req.session.user);
+
+    // passport's session management
     req.logout();
     res.redirect('/');
   },

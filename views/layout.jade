@@ -11,6 +11,38 @@ html(ng-app="app")
     block styles
 
   body
+    nav.navbar-default(role="navigation")
+      // Brand and toggle get grouped for better mobile display
+      .navbar-header
+        button(type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href="/") Bridge
+
+      // Collect the nav links, forms, and other content for toggling
+      .collapse.navbar-collapse.navbar-ex1-collapse
+        ul.nav.navbar-nav
+          li
+            a(href="/#/test") Test Page
+          if (session.user && session.user.role == 'admin')
+            li
+              a(href="/admin") Admin          
+        ul.nav.navbar-nav.navbar-right
+          if session.user
+            li.dropdown
+              a.dropdown-toggle(href="#" data-toggle="dropdown")  #{session.user.email} 
+                b.caret
+                ul.dropdown-menu
+                  li
+                    a(href="/profile") Profile
+                  li
+                    a(href="/logout") Logout                  
+          else
+            li
+              a(href="/login") Login
+            
     block body
 
     script(type="text/ng-template", id="errorModalContent.html")
@@ -28,6 +60,7 @@ html(ng-app="app")
     script(type="text/javascript", src="/linker/js/angular-sails.io.js")
     script(type="text/javascript", src="/linker/js/app.js")
     script(type="text/javascript", src="/linker/js/angular-route.js")
+    script(type="text/javascript", src="/linker/js/controllers/mainCtrl.js")
     script(type="text/javascript", src="/linker/js/controllers/restCtrl.js")
     script(type="text/javascript", src="/linker/js/controllers/sailsSocketCtrl.js")
     script(type="text/javascript", src="/linker/js/controllers/testCtrl.js")
