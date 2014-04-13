@@ -25,8 +25,7 @@ angular.module('app', [
       }).otherwise({
         redirectTo: '/'
       });
-
-    console.log('angular!!');
+    
     //$locationProvider.html5Mode(true);
   });
 
